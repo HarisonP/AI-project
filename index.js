@@ -1,7 +1,9 @@
-// var brain = require('brain');
-var answerer = new require('./clever_bot_answerer');
+
+var answerer = require('./clever_bot_answerer');
 var cleverBotInterface = new answerer.cleverBotInterface();
-console.log(cleverBotInterface);
+var happinessLib = require('./happiness_interface')
+happinessInterface = new happinessLib.happinessInterface();
+console.log(cleverBotInterface, happinessInterface);
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
@@ -11,6 +13,8 @@ console.log('Me:')
   	
   	cleverBotInterface.think(text, function(answer){
     	console.log('\nFacebook User: ' + answer);
+    	happinessInterface.train();
+    	console.log(happinessInterface.evaluate());
     	console.log('Me:')
     	process.stdin.resume();
     });

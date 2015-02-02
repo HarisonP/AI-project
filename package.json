@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "brain": "^0.7.0",
-    "cleverbot-node": "^0.1.8"
+    "cleverbot-node": "^0.1.8",
+    "express": "^4.11.2"
   },
   "devDependencies": {},
   "scripts": {

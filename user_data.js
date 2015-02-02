@@ -1,4 +1,4 @@
-var PersonStatus = function(dayOfTheWeek, currentDate, season, timeOfDay, userAge, userGender,
+function PersonStatus(dayOfTheWeek, currentDate, season, timeOfDay, userAge, userGender,
                             socialSuccess, ageOfSender, genderOfSender, relationshipToSender,
                             happiness) {
     this.dayOfTheWeek         = dayOfTheWeek;
@@ -29,3 +29,4 @@ PersonStatus.prototype.list_status = function() {
              this.relationshipToSender ];
 };
 
+exports.PersonStatus = PersonStatus
