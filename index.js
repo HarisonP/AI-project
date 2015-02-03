@@ -1,7 +1,7 @@
 var answerer = require('./clever_bot_answerer');
 var cleverBotInterface = new answerer.cleverBotInterface();
 var happinessLib = require('./happiness_interface')
-happinessInterface = new happinessLib.happinessInterface();
+var happinessInterface = new happinessLib.happinessInterface();
 console.log(cleverBotInterface, happinessInterface);
 
 process.stdin.resume();

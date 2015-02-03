@@ -38,7 +38,7 @@ var data = [{season: 1,
             ageOfSender: 22, 
             genderOfSender: 1, 
             relationshipToSender: 0,
-            happiness: 0.8},
+            happiness: 0.3},
 
             {season: 2,
             dayOfTheWeek: 3, 
@@ -50,10 +50,10 @@ var data = [{season: 1,
             ageOfSender: 35, 
             genderOfSender: 1, 
             relationshipToSender: 0,
-            happiness: 0.3},
+            happiness: 0.7},
 
             {season: 3,
-            dayOfTheWeek: 2, 
+            dayOfTheWeek: 6, 
             currentDate:17,
             // timeOfDay: now.getTime(),
             userAge: 55,
@@ -62,7 +62,7 @@ var data = [{season: 1,
             ageOfSender: 35, 
             genderOfSender: 1, 
             relationshipToSender: 1,
-            happiness: 0.932},
+            happiness: 0.99},
 
             {season: 3,
             dayOfTheWeek: 5, 
@@ -74,7 +74,7 @@ var data = [{season: 1,
             ageOfSender: 35, 
             genderOfSender: 1, 
             relationshipToSender: 0,
-            happiness: 0.712}
+            happiness: 0.5}
         ]
 var dataForTraining = [];
 data.forEach(function(row){
