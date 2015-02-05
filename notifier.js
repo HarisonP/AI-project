@@ -30,7 +30,7 @@ app.get('/', function (req, res) {
 });
 app.get('/happinessLevels/', function (req, res) {
 	console.log(req.query);
-	res.send(happinessInterface.evaluateForWeb(req.query.userInfo, req.query.sendersInfo, req.query.relationshipToSender));
+	res.send(happinessInterface.evaluateForWeb(req.query.userInfo, req.query.sendersInfo,req.query.timeInfo, req.query.relationshipToSender));
 })
 
 // Create an HTTP service.
@@ -41,4 +41,4 @@ http.createServer(app).listen(3000);
 
  
 // app.listen(80);
-// $.get('http://localhost:3000/happinessLevels', {userInfo:{userGender:0,socialSuccess:6,userAge:21},sendersInfo:{ageOfSender: 21, genderOfSender:1, relationshipToSender:0},relationshipToSender:0},function(resp){console.log(resp);});
+// $.get('http://localhost:3000/happinessLevels', {timeInfo:{season: 1, dayOfTheWeek: 6, currentDate:14}, userInfo:{userGender:0,socialSuccess:6,userAge:21},sendersInfo:{ageOfSender: 21, genderOfSender:1},relationshipToSender:0},function(resp){console.log(resp);});

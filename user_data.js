@@ -28,6 +28,18 @@ PersonStatus.prototype.listInTrainFormat = function() {
 
              output:{happiness: this.happiness} };
 };
+PersonStatus.prototype.listInRunFormat = function() {
+    return { dayOfTheWeek: this.dayOfTheWeek,
+             currentDate: this.currentDate,
+             season: this.season,
+             // this.timeOfDay,
+             userAge: this.userAge,
+             userGender: this.userGender,
+             socialSuccess: this.socialSuccess,
+             ageOfSender: this.ageOfSender,
+             genderOfSender: this.genderOfSender,
+             relationshipToSender: this.relationshipToSender };
+}
 var data = [{season: 1,
             dayOfTheWeek: 2, 
             currentDate:12,
