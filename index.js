@@ -13,13 +13,11 @@ console.log('Me:')
 happinessInterface.train();
 var sendersInfo = {ageOfSender: 21, genderOfSender:1, relationshipToSender:0}
 process.stdin.on('data', function (text) {
-
-	cleverBotInterface.setHappiness(happinessInterface.evaluate(sendersInfo, 0),function(success){
-		cleverBotInterface.think(text, function(answer){
+		cleverBotInterface.think(text,happinessInterface.evaluate(sendersInfo, 0).happiness, function(answer){
 			console.log('\nFacebook User: ' + answer);
 			process.stdin.resume();
 		});
-	});
+	
 });
 
 // var net = new brain.NeuralNetwork();
