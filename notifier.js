@@ -24,10 +24,18 @@ happinessInterface.train();
 app.get('/', function (req, res) {
 	
 	var message = req.query.message;
-   	cleverBotInterface.think(message,function(answer){
- 		res.send(answer)
-	});
+	var sendersInfo = {ageOfSender: 21, genderOfSender:1, relationshipToSender:0}
+  	
+	cleverBotInterface.setHappiness(happinessInterface.evaluate(sendersInfo, 0),function(success){
+		if(success){
+			cleverBotInterface.think(message,function(answer){
+ 				res.send(answer)
+			});
+		}
+   	
+	})
 });
+
 app.get('/happinessLevels/', function (req, res) {
 	console.log(req.query);
 	res.send(happinessInterface.evaluateForWeb(req.query.userInfo, req.query.sendersInfo,req.query.timeInfo, req.query.relationshipToSender));

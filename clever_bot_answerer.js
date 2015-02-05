@@ -3,8 +3,8 @@ var Cleverbot = require('cleverbot-node');
 function  cleverBotInterface() {
 	var self = this;
 	var answerer = new Cleverbot;
-	this.setHappiness = function (happynessValue){
-
+	this.setHappiness = function (happynessValue, callback){
+		callback(true);
 	}
 
 	this.think = function(stimulator,callback){

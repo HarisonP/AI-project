@@ -2,7 +2,6 @@ var answerer = require('./clever_bot_answerer');
 var cleverBotInterface = new answerer.cleverBotInterface();
 var happinessLib = require('./happiness_interface')
 var happinessInterface = new happinessLib.happinessInterface();
-console.log(cleverBotInterface, happinessInterface);
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
@@ -12,17 +11,15 @@ fs.writeFile('./usersInfo.json', JSON.stringify(userInfo));
 console.log('Me:')
 
 happinessInterface.train();
-
+var sendersInfo = {ageOfSender: 21, genderOfSender:1, relationshipToSender:0}
 process.stdin.on('data', function (text) {
-	
-	cleverBotInterface.think(text, function(answer){
-  	console.log('\nFacebook User: ' + answer);
-  	
-    var sendersInfo = {ageOfSender: 21, genderOfSender:1, relationshipToSender:0}
-  	
-    console.log(happinessInterface.evaluate(sendersInfo, 0));
-  	process.stdin.resume();
-  });
+
+	cleverBotInterface.setHappiness(happinessInterface.evaluate(sendersInfo, 0),function(success){
+		cleverBotInterface.think(text, function(answer){
+			console.log('\nFacebook User: ' + answer);
+			process.stdin.resume();
+		});
+	});
 });
 
 // var net = new brain.NeuralNetwork();
