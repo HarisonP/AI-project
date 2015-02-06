@@ -54,7 +54,7 @@ function happinessInterface() {
 					relationshipToSender: parseInt(relationshipToSender)
 					}
 		var personStatus = new personObject(data)
-		
+		// console.log(personStatus);
 		var output = net.run(personStatus.listInRunFormat());
 		
 		return output;

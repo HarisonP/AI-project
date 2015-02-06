@@ -19,17 +19,19 @@ function  cleverBotInterface() {
 		callback(true);
 	}
 
-	this.think = function(stimulator, happiness,callback){
+	this.think = function(stimulator, happiness,callback,apiCall){
 		
 		var normalStimulator = normalize(stimulator);
-
-		if(Math.random() < 0.5){
-			happiness = parseFloat(happiness) + Math.random() * 0.2;
-		}else{
-			happiness = parseFloat(happiness) - Math.random() * 0.2;
+		if(!apiCall){
+			if(Math.random() < 0.5){
+				happiness = parseFloat(happiness) + Math.random() * 0.2;
+			}else{
+				happiness = parseFloat(happiness) - Math.random() * 0.2;
+			}
 		}
 
 		Sentence.findOne({'sentence':normalStimulator}).exec(function(err, answerObj){
+			// console.log(answerObj);
 			var seekOutSideHelp = true;
 			var nearest = -1;
 			var indexForInsert = -1;
@@ -44,20 +46,21 @@ function  cleverBotInterface() {
 
 				var nearestAnswerIndex = nearest.toString().replace('.','');
 
-				if(Math.abs( nearest - answerObj.answers[nearestAnswerIndex]) <= 0.3){
-					
-					if(nearest == answerObj.answers[nearestAnswerIndex] ){
+				if(Math.abs( nearest - happiness) <= 0.1){
+					// console.log(nearest, happiness);
+					if(nearest == happiness){
 						callback(answerObj.answers[nearestAnswerIndex]);
+						return;
 					}
-
-					if(Math.random() > 0.1){
+					
+					if(Math.random() > 0.2){
 						callback(answerObj.answers[nearestAnswerIndex]);
 					}else{
 						seekOutSideHelp = true;
 					}
 					
 				}else{
-					if(Math.random() < 0.4){
+					if(Math.random() < 0.7){
 						callback(answerObj.answers[nearestAnswerIndex]);
 					}else{
 						seekOutSideHelp = true;
@@ -69,6 +72,7 @@ function  cleverBotInterface() {
 				self.setHappiness(happiness,function(success){
 					
 					answerer.write(normalStimulator, function (answer) {
+						// console.log(answer);
 						if(answerObj){
 							happiness.toString().replace('.','')
 							var newOBj = JSON.parse(JSON.stringify(answerObj.answers));
@@ -104,9 +108,9 @@ function  cleverBotInterface() {
 	}
 
 	function normalize(sentence){
+
 		sentence = sentence.toLowerCase();
 		sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
-		
 		return sentence.replace('\n','').replace('\r','');
 	}
 
@@ -117,6 +121,9 @@ function findNearest(array, value){
 		return {value: array[0], index:0};
 	}
 	for(var i = 0; i < array.length - 1; i++){
+		if(array[i] == value){
+			return {value: array[i], indexForInsert:i + 1}
+		}
 		if(array[i] < value && value < array[i + 1] ){
 			var distanceToTheLower = Math.abs(array[i] - value);
 			var distanceToTheUpper = Math.abs(array[i + 1] - value);

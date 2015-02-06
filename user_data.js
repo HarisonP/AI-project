@@ -1,3 +1,24 @@
+//PersonStatus Legend
+// {     
+//       season: [1..4],                //1-Winter, 2-Spring, 3-Summer, 4-Autumn
+//       dayOfTheWeek: [1..7],          //1-Monday, 2-Tuesday, ..., 7-Sunday 
+//       currentDate: [1..28/30/31],    //Days of the month
+//       // timeOfDay: now.getTime(),   //Clock
+//       userAge: --,                   //Recievers Age
+//       userGender: {0,1},             //Recievers Gender - 0-Male, 1-Female
+//       socialSuccess: [0..10],        //Recievers Social Status -
+//                                      //0 - No friends, acquaintances, or colleagues
+//                                      //10 - Very Popular, Lots of friends, acquaintances and colleagues
+//       ageOfSender: --,               //Senders Age
+//       genderOfSender: {0,1},         //Senders Gender - 0-Male, 1-Female
+//       relationshipToSender: [0..10], //Relationship between Sender and Reciever -
+//                                      //0 - Seen eachother once
+//                                      //10 - Best Friends/Significant Other
+//       happiness: [0..1],             //Happiness level at moment of above-listed circumstances - 
+//                                      // 0 - Very unhappy - Extremely passive or uninterested response
+//                                      // 1 - Very happy - Extremely joyfull/positive/engaging response
+//}
+
 function PersonStatus(info) {
     this.dayOfTheWeek         = info.dayOfTheWeek;
     this.currentDate          = info.currentDate;
@@ -40,59 +61,14 @@ PersonStatus.prototype.listInRunFormat = function() {
              genderOfSender: this.genderOfSender,
              relationshipToSender: this.relationshipToSender };
 }
-var data = [{season: 1,
-            dayOfTheWeek: 2, 
-            currentDate:12,
-            // timeOfDay: now.getTime(),
-            userAge: 22,
-            userGender: 0,
-            socialSuccess: 5,
-            ageOfSender: 22, 
-            genderOfSender: 1, 
-            relationshipToSender: 0,
-            happiness: 0.3},
-
-            {season: 2,
-            dayOfTheWeek: 3, 
-            currentDate:13,
-            // timeOfDay: now.getTime(),
-            userAge: 12,
-            userGender: 1,
-            socialSuccess: 3,
-            ageOfSender: 35, 
-            genderOfSender: 1, 
-            relationshipToSender: 0,
-            happiness: 0.7},
-
-            {season: 3,
-            dayOfTheWeek: 6, 
-            currentDate:17,
-            // timeOfDay: now.getTime(),
-            userAge: 55,
-            userGender: 1,
-            socialSuccess: 9,
-            ageOfSender: 35, 
-            genderOfSender: 1, 
-            relationshipToSender: 1,
-            happiness: 0.99},
-
-            {season: 3,
-            dayOfTheWeek: 5, 
-            currentDate:3,
-            // timeOfDay: now.getTime(),
-            userAge: 33,
-            userGender: 0,
-            socialSuccess: 5,
-            ageOfSender: 35, 
-            genderOfSender: 1, 
-            relationshipToSender: 0,
-            happiness: 0.5}
-        ]
+var data = require('./user_interaction_records').data;
 var dataForTraining = [];
 data.forEach(function(row){
     var newPersonStatus = new PersonStatus(row);
     dataForTraining.push(newPersonStatus.listInTrainFormat())
 });
 
+
 exports.PersonStatus = PersonStatus;
 exports.dataForTraining = dataForTraining;
+

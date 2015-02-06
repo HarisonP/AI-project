@@ -25,13 +25,14 @@ app.get('/', function (req, res) {
 	
 	var message = req.query.message,
 		sendersInfo = {ageOfSender: 21, genderOfSender:1},
-		happiness = req.query.happiness;
+		happiness = parseFloat(req.query.happiness);
+		message = message.split("'").join("");
 
 		console.log(message,happiness);
-		
+
 	cleverBotInterface.think(message,happiness,function(answer){
 			res.send(answer)
-	});
+	}, true);
 });
 
 app.get('/happinessLevels/', function (req, res) {
@@ -47,4 +48,5 @@ http.createServer(app).listen(3000);
 
  
 // app.listen(80);
-// $.get('http://localhost:3000/happinessLevels', {timeInfo:{season: 1, dayOfTheWeek: 6, currentDate:14}, userInfo:{userGender:0,socialSuccess:6,userAge:21},sendersInfo:{ageOfSender: 21, genderOfSender:1},relationshipToSender:0},function(resp){console.log(resp);});
+
+ // $.get('http://localhost:3000/happinessLevels', {timeInfo:{season: 1, dayOfTheWeek: 6, currentDate:14},sendersInfo:{ageOfSender: 50, genderOfSender:1},relationshipToSender:10,userInfo:{userGender:0,socialSuccess:5,userAge:20}},function(resp){console.log(resp);});
