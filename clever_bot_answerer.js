@@ -45,7 +45,8 @@ function  cleverBotInterface() {
 				indexForInsert = data.indexForInsert;
 
 				var nearestAnswerIndex = nearest.toString().replace('.','');
-
+				console.log( nearest - happiness)
+				console.log(answerObj)
 				if(Math.abs( nearest - happiness) <= 0.1){
 					// console.log(nearest, happiness);
 					if(nearest == happiness){
@@ -60,7 +61,7 @@ function  cleverBotInterface() {
 					}
 					
 				}else{
-					if(Math.random() < 0.7){
+					if(Math.random() > 0.7){
 						callback(answerObj.answers[nearestAnswerIndex]);
 					}else{
 						seekOutSideHelp = true;
