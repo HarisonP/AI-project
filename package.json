@@ -6,7 +6,9 @@
   "dependencies": {
     "brain": "^0.7.0",
     "cleverbot-node": "^0.1.8",
-    "express": "^4.11.2"
+    "express": "^4.11.2",
+    "mongoose": "^3.8.22",
+    "underscore": "^1.7.0"
   },
   "devDependencies": {},
   "scripts": {

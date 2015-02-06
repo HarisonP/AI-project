@@ -8,25 +8,18 @@ process.stdin.setEncoding('utf8');
 var fs = require('fs');
 var userInfo = {userGender:0, socialSuccess: 6, userAge:21}
 fs.writeFile('./usersInfo.json', JSON.stringify(userInfo));
-console.log('Me:')
+console.log('Me:');
 
 happinessInterface.train();
 var sendersInfo = {ageOfSender: 21, genderOfSender:1, relationshipToSender:0}
 process.stdin.on('data', function (text) {
 		cleverBotInterface.think(text,happinessInterface.evaluate(sendersInfo, 0).happiness, function(answer){
 			console.log('\nFacebook User: ' + answer);
+			console.log('Me:');
 			process.stdin.resume();
 		});
 	
 });
 
-// var net = new brain.NeuralNetwork();
-// net.train([{input: [0, 0], output: [0.01]},
-//            {input: [0, 1], output: [0.99]},
-//            {input: [1, 0], output: [0.32]},
-//            {input: [1, 1], output: [0.13]},
-//            {input: [1, 1], output: [0.72]}]);
 
-// var output = net.run([1, 0]);  // [0.987]
-// console.log(output);
 
