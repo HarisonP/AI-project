@@ -44,7 +44,7 @@ function  cleverBotInterface() {
 
 				var nearestAnswerIndex = nearest.toString().replace('.','');
 
-				if(Math.abs( nearest - answerObj.answers[nearestAnswerIndex]) <= 0.2){
+				if(Math.abs( nearest - answerObj.answers[nearestAnswerIndex]) <= 0.3){
 					
 					if(nearest == answerObj.answers[nearestAnswerIndex] ){
 						callback(answerObj.answers[nearestAnswerIndex]);

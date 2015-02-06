@@ -25,9 +25,11 @@ app.get('/', function (req, res) {
 	
 	var message = req.query.message,
 		sendersInfo = {ageOfSender: 21, genderOfSender:1},
-		happinessObj = happinessInterface.evaluate({ageOfSender: 21, genderOfSender:1}, parseInt(Math.random() < 0.5));
+		happiness = req.query.happiness;
+
+		console.log(message,happiness);
 		
-	cleverBotInterface.think(message,happinessObj.happiness,function(answer){
+	cleverBotInterface.think(message,happiness,function(answer){
 			res.send(answer)
 	});
 });
