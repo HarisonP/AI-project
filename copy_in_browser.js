@@ -3,9 +3,9 @@
 
 $('.fbDockChatTabFlyout').on("DOMSubtreeModified",'.conversation', function(e) { 
 	if($(e.target).eq(0).is('div') && $($(e.target)[0].lastChild).find('a').length != 0){
-		$.get('http://localhost:3000/',{message:message},function(response){
-			console.log(response)
-		})
+		// $.get('http://localhost:3000/',{message:message},function(response){
+		// 	console.log(response)
+		// })
 		var o = document.getElementsByClassName("uiTextareaAutogrow _552m");
 		// set the chat textbox
 		var chatTextBox = o[0];
